@@ -34,6 +34,7 @@ public class CurrencyConversionController {
     @GetMapping("/currencies")
     public ResponseEntity<String> getAllCurrencies(){
         return ResponseEntity.status(HttpStatus.OK)
+                .header("Content-Type", "application/json")
                 .body(currencyConversionService.getAllCurrencies());
     }
 

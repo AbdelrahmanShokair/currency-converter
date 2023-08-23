@@ -41,9 +41,9 @@ public class CurrencyConversionServiceImpl implements CurrencyConversionService 
 
     @Override
     public String getAllCurrencies() {
-        return "{\n"+Arrays.stream(Currency.values())
+        return Arrays.stream(Currency.values())
                 .map(currency -> String.format("{\"Currency\": \"%s\", \"Flag URL\": \"%s\"}", currency.getCode(), currency.getFlagUrl()))
-                .collect(Collectors.joining(",\n"))+"\n}";
+                .collect(Collectors.joining(",\n"));
     }
 
     @Override
