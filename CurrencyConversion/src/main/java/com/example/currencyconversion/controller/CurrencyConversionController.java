@@ -2,8 +2,7 @@ package com.example.currencyconversion.controller;
 
 import com.example.currencyconversion.dto.ConversionDto;
 import com.example.currencyconversion.service.CurrencyConversionService;
-import com.example.currencyconversion.util.Currencies;
-import com.google.gson.JsonObject;
+import com.example.currencyconversion.util.Currency;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -33,7 +32,7 @@ public class CurrencyConversionController {
     }
 
     @GetMapping("/currencies")
-    public ResponseEntity<Currencies[]> getAllCurrencies(){
+    public ResponseEntity<String> getAllCurrencies(){
         return ResponseEntity.status(HttpStatus.OK)
                 .body(currencyConversionService.getAllCurrencies());
     }

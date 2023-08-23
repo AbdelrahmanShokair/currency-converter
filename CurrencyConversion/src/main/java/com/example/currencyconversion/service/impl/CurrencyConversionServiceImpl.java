@@ -3,15 +3,17 @@ package com.example.currencyconversion.service.impl;
 import com.example.currencyconversion.client.CurrencyConversionClient;
 import com.example.currencyconversion.dto.ConversionDto;
 import com.example.currencyconversion.service.CurrencyConversionService;
-import com.example.currencyconversion.util.Currencies;
+import com.example.currencyconversion.util.Currency;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -38,8 +40,13 @@ public class CurrencyConversionServiceImpl implements CurrencyConversionService 
     }
 
     @Override
-    public Currencies[] getAllCurrencies() {
-        return Currencies.values();
+    public String getAllCurrencies() {
+//        return Currency.stream()
+//                .map(currency -> String.format("{\"Currency\": \"%s\", \"Flag URL\": \"%s\"}", currency.getCode(), currency.getFlagUrl()))
+//                .collect(Collectors.joining(",\n"));
+        return "{\n"+Arrays.stream(Currency.values())
+                .map(currency -> String.format("{\"Currency\": \"%s\", \"Flag URL\": \"%s\"}", currency.getCode(), currency.getFlagUrl()))
+                .collect(Collectors.joining(",\n"))+"\n}";
     }
 
     @Override
