@@ -25,7 +25,9 @@ public class CurrencyConversionController {
     }
 
     @GetMapping("/compare")
-    public ResponseEntity<List<ConversionDto>> getRate(@RequestParam String from, @RequestParam List<String> to,@RequestParam double amount){
+    public ResponseEntity<List<ConversionDto>> getRate(@RequestParam String from,
+                                                       @RequestParam List<String> to,
+                                                       @RequestParam double amount){
 
         return ResponseEntity.status(HttpStatus.OK)
                 .body(currencyConversionService.compare(from, to,amount));
