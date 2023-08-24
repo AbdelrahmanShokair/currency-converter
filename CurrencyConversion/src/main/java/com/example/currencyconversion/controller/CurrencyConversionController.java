@@ -40,10 +40,11 @@ public class CurrencyConversionController {
                 .body(currencyConversionService.getAllCurrencies());
     }
 
+    
     @GetMapping("/rates")
     public ResponseEntity<List<RateDto>> getAllRates(@RequestParam String from, @RequestParam List<String> to){
         return ResponseEntity.status(HttpStatus.OK)
                 .body(currencyConversionService.getAllRates(from,to));
     }
-    
+
 }
