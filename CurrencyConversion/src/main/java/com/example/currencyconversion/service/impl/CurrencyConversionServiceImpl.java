@@ -2,6 +2,8 @@ package com.example.currencyconversion.service.impl;
 
 import com.example.currencyconversion.client.CurrencyConversionClient;
 import com.example.currencyconversion.dto.ConversionDto;
+import com.example.currencyconversion.dto.CurrencyDto;
+import com.example.currencyconversion.dto.RateDto;
 import com.example.currencyconversion.service.CurrencyConversionService;
 import com.example.currencyconversion.util.Currency;
 import com.google.gson.JsonElement;
@@ -12,8 +14,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.Set;
-import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -31,7 +31,7 @@ public class CurrencyConversionServiceImpl implements CurrencyConversionService 
     }
 
     @Override
-    public ConversionDto getRate(String from, String to) {
+    public ConversionDto compare(String from, String to) {
         String responseBody = currencyConversionClient.getExchangeRate(from, to);
         JsonObject jsonResponse = JsonParser.parseString(responseBody).getAsJsonObject();
         JsonElement data = jsonResponse.get("conversion_rate");
@@ -40,17 +40,19 @@ public class CurrencyConversionServiceImpl implements CurrencyConversionService 
     }
 
     @Override
-    public String getAllCurrencies() {
+    public List<CurrencyDto> getAllCurrencies() {
         return Arrays.stream(Currency.values())
-                .map(currency -> String.format("{\"Currency\": \"%s\", \"Flag URL\": \"%s\"}", currency.getCode(), currency.getFlagUrl()))
-                .collect(Collectors.joining(",\n"));
+                .map(currency -> new CurrencyDto(currency.getCode(), currency.getFlagUrl(), currency.getDesc())).toList();
     }
 
     @Override
-    public String getAllRates(String from) {
-        String responseBody = currencyConversionClient.getAllRates(from);
-        JsonObject jsonResponse = JsonParser.parseString(responseBody).getAsJsonObject();
-        JsonObject data = jsonResponse.getAsJsonObject("conversion_rates");
-        return data.toString();
+    public List<RateDto> getAllRates(String from, List<String> to) {
+        return to.stream().map(targetCurrency -> {
+            String responseBody = currencyConversionClient.getExchangeRate(from,targetCurrency);
+            JsonObject jsonResponse = JsonParser.parseString(responseBody).getAsJsonObject();
+            JsonElement data = jsonResponse.get("conversion_rate");
+            return new RateDto(from,targetCurrency,data.getAsDouble());
+        }).toList();
+
     }
 }

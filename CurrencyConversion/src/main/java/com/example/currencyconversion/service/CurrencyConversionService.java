@@ -1,16 +1,15 @@
 package com.example.currencyconversion.service;
 
 import com.example.currencyconversion.dto.ConversionDto;
-import com.example.currencyconversion.util.Currency;
-import com.google.gson.JsonObject;
+import com.example.currencyconversion.dto.CurrencyDto;
+import com.example.currencyconversion.dto.RateDto;
 
 import java.util.List;
-import java.util.Set;
 
 public interface CurrencyConversionService {
     ConversionDto convert(String from,String to, double amount);
     ConversionDto getRate(String from,String to);
-    String getAllCurrencies();
+    List<CurrencyDto> getAllCurrencies();
 
-    String getAllRates(String from);
+    List<RateDto> getAllRates(String from, List<String> to);
 }

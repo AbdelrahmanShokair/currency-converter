@@ -1,15 +1,15 @@
 package com.example.currencyconversion.controller;
 
 import com.example.currencyconversion.dto.ConversionDto;
+import com.example.currencyconversion.dto.CurrencyDto;
+import com.example.currencyconversion.dto.RateDto;
 import com.example.currencyconversion.service.CurrencyConversionService;
-import com.example.currencyconversion.util.Currency;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -32,16 +32,15 @@ public class CurrencyConversionController {
     }
 
     @GetMapping("/currencies")
-    public ResponseEntity<String> getAllCurrencies(){
+    public ResponseEntity<List<CurrencyDto>> getAllCurrencies(){
         return ResponseEntity.status(HttpStatus.OK)
-                .header("Content-Type", "application/json")
                 .body(currencyConversionService.getAllCurrencies());
     }
 
-    @GetMapping("/compare/{from}")
-    public ResponseEntity<String> getAllRates(@PathVariable String from){
+    @GetMapping("/compare")
+    public ResponseEntity<List<RateDto>> getAllRates(@RequestParam String from, @RequestParam List<String> to){
         return ResponseEntity.status(HttpStatus.OK)
-                .header("Content-Type", "application/json")
-                .body(currencyConversionService.getAllRates(from));
+//                .header("Content-Type", "application/json")
+                .body(currencyConversionService.getAllRates(from,to));
     }
 }

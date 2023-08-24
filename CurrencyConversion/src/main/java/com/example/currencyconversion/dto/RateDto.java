@@ -8,9 +8,9 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class ConversionDto {
+public class RateDto {
     private  String from;
     private String to;
     @Positive
-    private double value;
+    private double rate;
 }

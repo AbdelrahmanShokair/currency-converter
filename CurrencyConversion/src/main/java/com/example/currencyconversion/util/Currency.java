@@ -3,8 +3,6 @@ package com.example.currencyconversion.util;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
-import java.util.stream.Collectors;
-
 @Getter
 @AllArgsConstructor
 public enum Currency {
@@ -21,9 +19,6 @@ public enum Currency {
     QAR("QAR","https://api.exchangerate-api.com/flag-images/QA.gif","Qatari Riyal");
 
     private final String code;
-    private final String desc;
     private final String flagUrl;
-
-
-
+    private final String desc;
 }
