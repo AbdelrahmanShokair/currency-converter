@@ -16,10 +16,10 @@ import java.util.List;
 @RequestMapping("/api/currency-conversions")
 public class CurrencyConversionController {
     private final CurrencyConversionService currencyConversionService;
-    @GetMapping("/convert/{from}/{to}/{amount}")
-    public ResponseEntity<ConversionDto> convert(@PathVariable String from,
-                                                 @PathVariable String to,
-                                                 @PathVariable double amount){
+    @GetMapping("/convert")
+    public ResponseEntity<ConversionDto> convert(@RequestParam String from,
+                                                 @RequestParam String to,
+                                                 @RequestParam double amount){
         return ResponseEntity.status(HttpStatus.OK)
                 .body(currencyConversionService.convert(from, to, amount));
     }
