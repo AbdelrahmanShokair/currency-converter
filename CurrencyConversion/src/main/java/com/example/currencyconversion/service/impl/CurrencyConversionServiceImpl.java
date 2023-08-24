@@ -31,7 +31,7 @@ public class CurrencyConversionServiceImpl implements CurrencyConversionService 
     }
 
     @Override
-    public ConversionDto compare(String from, String to) {
+    public ConversionDto getRate(String from, String to) {
         String responseBody = currencyConversionClient.getExchangeRate(from, to);
         JsonObject jsonResponse = JsonParser.parseString(responseBody).getAsJsonObject();
         JsonElement data = jsonResponse.get("conversion_rate");
