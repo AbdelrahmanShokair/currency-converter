@@ -45,4 +45,5 @@ public class CurrencyConversionController {
         return ResponseEntity.status(HttpStatus.OK)
                 .body(currencyConversionService.getAllRates(from,to));
     }
+    
 }
