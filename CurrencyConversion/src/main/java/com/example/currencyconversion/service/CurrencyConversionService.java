@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface CurrencyConversionService {
     ConversionDto convert(String from,String to, double amount);
-    ConversionDto getRate(String from,String to);
+    List<ConversionDto> compare(String from,List<String> to, double amount);
     List<CurrencyDto> getAllCurrencies();
 
     List<RateDto> getAllRates(String from, List<String> to);

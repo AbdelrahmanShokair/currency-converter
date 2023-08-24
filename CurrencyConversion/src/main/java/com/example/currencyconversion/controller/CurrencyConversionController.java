@@ -24,11 +24,11 @@ public class CurrencyConversionController {
                 .body(currencyConversionService.convert(from, to, amount));
     }
 
-    @GetMapping("/exchange-rate/{from}/{to}")
-    public ResponseEntity<ConversionDto> getRate(@PathVariable String from,
-                                                 @PathVariable String to){
+    @GetMapping("/compare")
+    public ResponseEntity<List<ConversionDto>> getRate(@RequestParam String from, @RequestParam List<String> to,@RequestParam double amount){
+
         return ResponseEntity.status(HttpStatus.OK)
-                .body(currencyConversionService.getRate(from, to));
+                .body(currencyConversionService.compare(from, to,amount));
     }
 
     @GetMapping("/currencies")
@@ -37,10 +37,9 @@ public class CurrencyConversionController {
                 .body(currencyConversionService.getAllCurrencies());
     }
 
-    @GetMapping("/compare")
+    @GetMapping("/rates")
     public ResponseEntity<List<RateDto>> getAllRates(@RequestParam String from, @RequestParam List<String> to){
         return ResponseEntity.status(HttpStatus.OK)
-//                .header("Content-Type", "application/json")
                 .body(currencyConversionService.getAllRates(from,to));
     }
 }
