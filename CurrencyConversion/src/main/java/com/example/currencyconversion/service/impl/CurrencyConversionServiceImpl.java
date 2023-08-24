@@ -27,7 +27,7 @@ public class CurrencyConversionServiceImpl implements CurrencyConversionService 
         JsonObject jsonResponse = JsonParser.parseString(responseBody).getAsJsonObject();
         JsonElement data = jsonResponse.get("conversion_result");
         double conversionResult = data.getAsDouble();
-        return new ConversionDto(conversionResult);
+        return new ConversionDto(from,to,conversionResult);
     }
 
     @Override
@@ -36,7 +36,7 @@ public class CurrencyConversionServiceImpl implements CurrencyConversionService 
         JsonObject jsonResponse = JsonParser.parseString(responseBody).getAsJsonObject();
         JsonElement data = jsonResponse.get("conversion_rate");
         double conversionResult = data.getAsDouble();
-        return new ConversionDto(conversionResult);
+        return new ConversionDto(from,to,conversionResult);
     }
 
     @Override
