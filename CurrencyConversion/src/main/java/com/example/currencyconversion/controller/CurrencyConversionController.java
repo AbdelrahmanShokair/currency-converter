@@ -13,6 +13,7 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
+@CrossOrigin(origins = "*", maxAge = 3600)
 @RequestMapping("/api/currency-conversions")
 public class CurrencyConversionController {
     private final CurrencyConversionService currencyConversionService;
