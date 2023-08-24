@@ -52,7 +52,7 @@ public class CurrencyConversionServiceImpl implements CurrencyConversionService 
 //            JsonElement data = jsonResponse.get("conversion_rate");
 //            return new RateDto(from,targetCurrency,data.getAsDouble());
 //        }).toList();
-
+        //eshtghal
         String responseBody = currencyConversionClient.getAllRates(from);
         JsonObject jsonResponse = JsonParser.parseString(responseBody).getAsJsonObject();
         JsonObject data = jsonResponse.getAsJsonObject("conversion_rates");
