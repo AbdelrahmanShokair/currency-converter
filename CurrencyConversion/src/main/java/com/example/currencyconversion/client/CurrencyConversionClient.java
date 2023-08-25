@@ -12,14 +12,6 @@ public interface CurrencyConversionClient {
             @PathVariable String to,
             @PathVariable double amount
     );
-
-    @GetMapping("/pair/{from}/{to}")
-    String getExchangeRate(
-            @PathVariable String from,
-            @PathVariable String to
-
-    );
-
     @GetMapping("/latest/{from}")
     String getAllRates(
             @PathVariable String from
