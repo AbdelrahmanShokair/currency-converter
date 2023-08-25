@@ -12,7 +12,7 @@ public enum Currency {
     GBP("GBP","https://img.freepik.com/free-vector/illustration-uk-flag_53876-18166.jpg?w=1380&t=st=1692879418~exp=1692880018~hmac=929d153d1dbd6fd5694a87131cfe1eaf904f4b8626fb826bf6505cbe3d0fa7bf","Pound sterling"),
     EGP("EGP","https://img.freepik.com/free-vector/illustration-egypt-flag_53876-27140.jpg?w=1380&t=st=1692879451~exp=1692880051~hmac=090393f01a0429e7b71be89293bf94cbedf37afcdec0383994baaf8262dd3fa9","Egyptian Pound"),
     AED("AED","https://static.vecteezy.com/system/resources/thumbnails/001/416/661/small/uae-isolated-flag-vector.jpg","United Arab Emirates Dirham"),
-    RSA("RSA","https://www.countryflags.com/wp-content/uploads/saudi-arabia-flag-png-xl.png","Saudi Riyal"),
+    RSA("SAR","https://www.countryflags.com/wp-content/uploads/saudi-arabia-flag-png-xl.png","Saudi Riyal"),
     KWD("KWD","https://media.istockphoto.com/id/938716998/vector/kuwait-flag.jpg?s=612x612&w=0&k=20&c=-6akFYQhRs9KeIkARWytGJqDVc5y0kjbRCIr7bzpvfg=","Kuwaiti Dinar"),
     CHF("CHF","https://img.freepik.com/free-vector/illustration-switzerland-flag_53876-27100.jpg?w=1380&t=st=1692880070~exp=1692880670~hmac=89be227ae1d9079cab4ec1904d58b2e6d732247308215a4b3c506a9421fea017","Swiss Franc"),
     CAD("CAD","https://img.freepik.com/free-vector/illustration-canada-flag_53876-27114.jpg?w=1380&t=st=1692880187~exp=1692880787~hmac=0e74af3e6cde9835f8a0b4355e672eefc285733cc4ea31e9ba3a7552c5d5665e","Canadian Dollar"),

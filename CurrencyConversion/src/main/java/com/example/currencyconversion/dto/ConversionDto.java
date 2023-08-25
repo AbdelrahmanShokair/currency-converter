@@ -13,6 +13,6 @@ public class ConversionDto {
     private  String from;
     private String to;
     @Positive
-    @Digits(integer = 3,fraction = 1)
+    
     private double value;
 }
