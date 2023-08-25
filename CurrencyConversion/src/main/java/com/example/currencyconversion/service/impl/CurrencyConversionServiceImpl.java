@@ -2,7 +2,7 @@ package com.example.currencyconversion.service.impl;
 
 import com.example.currencyconversion.client.CurrencyConversionClient;
 import com.example.currencyconversion.dto.ConversionDto;
-import com.example.currencyconversion.dto.CurrencyDto;
+import com.example.currencyconversion.dto.CurrencyResponseDto;
 import com.example.currencyconversion.dto.RateDto;
 import com.example.currencyconversion.service.CurrencyConversionService;
 import com.example.currencyconversion.util.Currency;
@@ -11,7 +11,6 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-
 import java.util.Arrays;
 import java.util.List;
 
@@ -28,7 +27,6 @@ public class CurrencyConversionServiceImpl implements CurrencyConversionService 
         double conversionResult = data.getAsDouble();
         return new ConversionDto(from,to,conversionResult);
     }
-
     @Override
     public List<ConversionDto> compare(String from, List<String> to,double amount) {
 
@@ -37,32 +35,20 @@ public class CurrencyConversionServiceImpl implements CurrencyConversionService 
              return new ConversionDto(from, rate.getTo(), rate.getRate()*amount);
         }).toList();
     }
-
     @Override
-    public List<CurrencyDto> getAllCurrencies() {
+    public List<CurrencyResponseDto> getAllCurrencies() {
         return Arrays.stream(Currency.values())
-                .map(currency -> new CurrencyDto(currency.getCode(), currency.getFlagUrl(), currency.getDesc())).toList();
+                .map(currency -> new CurrencyResponseDto(currency.getCode(), currency.getFlagUrl(), currency.getDesc())).toList();
     }
-
     @Override
     public List<RateDto> getAllRates(String from, List<String> to) {
-//        return to.stream().map(targetCurrency -> {
-//            String responseBody = currencyConversionClient.getExchangeRate(from,targetCurrency);
-//            JsonObject jsonResponse = JsonParser.parseString(responseBody).getAsJsonObject();
-//            JsonElement data = jsonResponse.get("conversion_rate");
-//            return new RateDto(from,targetCurrency,data.getAsDouble());
-//        }).toList();
-
         String responseBody = currencyConversionClient.getAllRates(from);
         JsonObject jsonResponse = JsonParser.parseString(responseBody).getAsJsonObject();
         JsonObject data = jsonResponse.getAsJsonObject("conversion_rates");
-        return to.stream().map(targetCurrency -> {
-            if (data.has(targetCurrency) == true){
+        return to.stream()
+                .filter(currency -> data.has(currency))
+                .map(targetCurrency -> {
                 return new RateDto(from,targetCurrency,data.get(targetCurrency).getAsDouble());
-            }else {
-                return null;
-            }
         }).toList();
-
     }
 }
