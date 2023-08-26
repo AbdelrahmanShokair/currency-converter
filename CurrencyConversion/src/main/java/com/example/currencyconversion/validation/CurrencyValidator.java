@@ -20,9 +20,4 @@ public class CurrencyValidator implements ConstraintValidator<ValidCurrency,Stri
     public boolean isValid(String currencyCode, ConstraintValidatorContext constraintValidatorContext) {
         return currencyCode != null && allowedCurrency.contains(currencyCode);
     }
-
-//    @Override
-//    public boolean isValid(List<String> currenciesCode, ConstraintValidatorContext constraintValidatorContext) {
-//        return currenciesCode != null && allowedCurrency.contains(currenciesCode);
-//    }
 }

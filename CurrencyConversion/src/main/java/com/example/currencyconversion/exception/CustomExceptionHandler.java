@@ -33,18 +33,14 @@ public class CustomExceptionHandler extends ResponseEntityExceptionHandler {
         );
         return ResponseEntity.badRequest().body(result);
     }
-
-
     @ExceptionHandler(ConstraintViolationException.class)
     public ResponseEntity<Object> handleConstraintViolationException(ConstraintViolationException ex, WebRequest request) {
         log.error("ConstraintViolationException class=" + ex.getClass() + ", status=BAD_REQUEST(400)");
         System.out.println(ex.getClass());
         Map<Path, String> result = new HashMap<>();
-
         ex.getConstraintViolations().forEach(constraintViolation -> {
             result.put(constraintViolation.getPropertyPath(), constraintViolation.getMessage());
         });
-
         return ResponseEntity.badRequest().body(result);
     }
 

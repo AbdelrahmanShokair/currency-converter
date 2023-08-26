@@ -5,6 +5,7 @@ import com.example.currencyconversion.dto.CurrencyResponseDto;
 import com.example.currencyconversion.dto.RateDto;
 import com.example.currencyconversion.service.CurrencyConversionService;
 import com.example.currencyconversion.validation.annotation.ValidCurrency;
+import jakarta.validation.constraints.Positive;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,7 +24,7 @@ public class CurrencyConversionController {
     @GetMapping("/convert")
     public ResponseEntity<ConversionDto> convert(@RequestParam @ValidCurrency String from,
                                                  @RequestParam @ValidCurrency String to,
-                                                 @RequestParam double amount){
+                                                 @RequestParam @Positive double amount){
         return ResponseEntity.status(HttpStatus.OK)
                 .body(currencyConversionService.convert(from, to, amount));
 
@@ -32,8 +33,8 @@ public class CurrencyConversionController {
 
     @GetMapping("/compare")
     public ResponseEntity<List<ConversionDto>> getRate(@RequestParam @ValidCurrency String from,
-                                                       @RequestParam List<String> to,
-                                                       @RequestParam double amount){
+                                                       @RequestParam List<@ValidCurrency String> to,
+                                                       @RequestParam @Positive double amount){
 
         return ResponseEntity.status(HttpStatus.OK)
                 .body(currencyConversionService.compare(from, to,amount));
@@ -47,7 +48,7 @@ public class CurrencyConversionController {
 
     @GetMapping("/rates")
     public ResponseEntity<List<RateDto>> getAllRates(@RequestParam @ValidCurrency String from,
-                                                     @RequestParam List<String> to){
+                                                     @RequestParam List<@ValidCurrency String> to){
         return ResponseEntity.status(HttpStatus.OK)
                 .body(currencyConversionService.getAllRates(from,to));
     }
