@@ -15,4 +15,6 @@ public class ConversionDto {
     @Positive
     @Digits(integer = 3,fraction = 1)
     private double value;
+
+    
 }
