@@ -46,7 +46,7 @@ public class CurrencyConversionServiceImpl implements CurrencyConversionService 
                 .map(currency -> new CurrencyResponseDto(currency.getCode(), currency.getFlagUrl(), currency.getDesc())).toList();
     }
     @Override
-    @Cacheable(value = "getAllRates",key = "#from")
+    @Cacheable(value = "getAllRates",key = "#from+#to")
     public List<RateDto> getAllRates(String from, List<String> to) {
         String responseBody = currencyConversionClient.getAllRates(from);
         JsonObject jsonResponse = JsonParser.parseString(responseBody).getAsJsonObject();
