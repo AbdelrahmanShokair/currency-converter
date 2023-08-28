@@ -22,5 +22,3 @@ public enum Currency {
     private final String flagUrl;
     private final String desc;
 }
-
-//
