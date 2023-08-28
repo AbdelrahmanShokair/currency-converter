@@ -4,13 +4,13 @@
 # CMD [ "java", "-jar", "spring-app.jar" ]
 
 # Stage 1: Build the Spring Boot application
-FROM openjdk:17 AS build
+FROM amazoncorretto:17 as build
 WORKDIR /app
 COPY . /app
 RUN ./mvnw clean package
 
 # Stage 2: Create a runtime container
-FROM openjdk:17-jre-slim
+FROM amazoncorretto:17
 WORKDIR /app
 COPY --from=build /app/target/your-app.jar /app/your-app.jar
 CMD ["java", "-jar", "your-app.jar"]
