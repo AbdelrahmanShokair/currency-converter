@@ -32,7 +32,7 @@ public class CurrencyConversionController {
     }
 
     @GetMapping("/compare")
-    public ResponseEntity<List<ConversionDto>> getRate(@RequestParam @ValidCurrency String from,
+    public ResponseEntity<List<ConversionDto>> compare(@RequestParam @ValidCurrency String from,
                                                        @RequestParam List<@ValidCurrency String> to,
                                                        @RequestParam @Positive double amount){
 
