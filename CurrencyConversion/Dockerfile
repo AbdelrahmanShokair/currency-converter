@@ -14,4 +14,8 @@ RUN ./mvnw clean package -DskipTests
 FROM amazoncorretto:17
 WORKDIR /app
 COPY --from=build /app/target/*.jar /app/your-app.jar
+<<<<<<< HEAD
 CMD ["java", "-jar", "your-app.jar"]
+=======
+CMD ["java", "-jar", "your-app.jar"]
+>>>>>>> fab05e7ec06aa757652b210cfcf67ead01743d4c
