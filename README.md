@@ -14,6 +14,7 @@
 - Unit tests for individual components to ensure their correct behavior. 🧪
 - Health check endpoint to monitor the status of the application. 🩺
 - Continuous Integration/Continuous Deployment (CI/CD) with Jenkins to automate the deployment process. 🔄
+- App containerization using Docker.🐳
 
 
 ```
@@ -75,8 +76,10 @@
 - Programming Language: Java 17
 - Backend Framework: Spring Boot v3.1.2
 - API Documentation: Swagger via OpenApi 3.0
+- Testing: Mockito and JUnit
+- Caching: Redis
 - Containerization: Docker
-- Cloud: AWS, Railway
+- Cloud: AWS, AWS EC2(Ubuntu), Railway
 - CI/CD: Jenkins
 - Other Frameworks: Spring Cloud OpenFeign, Spring Data Redis, Spring Cache
 
@@ -90,7 +93,10 @@
 ![Redis](https://img.shields.io/badge/Redis-DC382D?style=for-the-badge&logo=redis&logoColor=white)
 ![Railway](https://img.shields.io/badge/Railway-003545?style=for-the-badge&logo=railway&logoColor=white)
 ![AWS](https://img.shields.io/badge/Amazon_AWS-232F3E?style=for-the-badge&logo=amazon-aws&logoColor=white)
+![EC2](https://img.shields.io/badge/Amazon_EC2-232F3E?style=for-the-badge&logo=Amazon-aws&logoColor=white)
 ![Jenkins](https://img.shields.io/badge/Jenkins-D24939?style=for-the-badge&logo=jenkins&logoColor=white)
+![Mockito](https://img.shields.io/badge/-Mockito-%23880C9E?style=for-the-badge&logo=Mockito&logoColor=white)
+![JUnit](https://img.shields.io/badge/-JUnit-%8257E5?style=for-the-badge&logo=JUnit5&logoColor=white)
 
 
 # API Documentation 📝 via [|Swagger|](http://ec2-3-144-40-233.us-east-2.compute.amazonaws.com:8000/swagger-ui/index.html#/)
