@@ -10,7 +10,7 @@ COPY . /app
 RUN chmod +x mvnw
 RUN ./mvnw clean package -DskipTests
 
-# Stage 2: Create a runtime container
+# Stage 2: Create a runtime containers
 FROM amazoncorretto:17
 WORKDIR /app
 COPY --from=build /app/target/*.jar /app/your-app.jar
